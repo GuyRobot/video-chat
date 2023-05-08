@@ -4,13 +4,12 @@ import 'package:chatty/common/store/store.dart';
 
 import 'package:get/get.dart';
 
-/// 检查是否登录
+/// Check user has logged in
 class RouteAuthMiddleware extends GetMiddleware {
-  // priority 数字小优先级高
-  @override
-  int? priority = 0;
+  // priority smaller the more restricted
+  int? authPriority = 0;
 
-  RouteAuthMiddleware({required this.priority});
+  RouteAuthMiddleware({required this.authPriority});
 
   @override
   RouteSettings? redirect(String? route) {
@@ -18,8 +17,8 @@ class RouteAuthMiddleware extends GetMiddleware {
       return null;
     } else {
       Future.delayed(
-          Duration(seconds: 2), () => Get.snackbar("Tips", "Login expired, please login again!"));
-      return RouteSettings(name: AppRoutes.SIGN_IN);
+          const Duration(seconds: 2), () => Get.snackbar("Tips", "Login expired, please login again!"));
+      return const RouteSettings(name: AppRoutes.SIGN_IN);
     }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "346505078117",
+    "project_id": "fluttervideochat-4b896",
+    "storage_bucket": "fluttervideochat-4b896.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346505078117:android:34dfef60d373b093016d8c",
+        "android_client_info": {
+          "package_name": "com.dbestech.chatty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346505078117-0mod0paont8omcghrjmapou9m5dgarbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwPSocm8hI7ICKZvwQFi4Hk5ZQ-Qxxuqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346505078117-0mod0paont8omcghrjmapou9m5dgarbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
