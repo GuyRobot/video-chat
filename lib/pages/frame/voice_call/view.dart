@@ -64,6 +64,7 @@ class VoiceCallPage extends GetView<VoiceCallController> {
                   children: [
                     _buildIcon(
                       controller.state.isMicrophoneEnable.value,
+                      () {},
                       normalIconPath: "assets/icons/a_microphone.png",
                       checkedIconPath: "assets/icons/a_telephone.png",
                       normalText: "Microphone",
@@ -71,6 +72,9 @@ class VoiceCallPage extends GetView<VoiceCallController> {
                     ),
                     _buildIcon(
                       controller.state.isJoined.value,
+                      controller.state.isJoined.value
+                          ? controller.leaveChannel
+                          : controller.joinChannel,
                       normalIconPath: "assets/icons/a_telephone.png",
                       checkedIconPath: "assets/icons/a_phone.png",
                       normalColor: AppColors.primaryElementBg,
@@ -80,6 +84,7 @@ class VoiceCallPage extends GetView<VoiceCallController> {
                     ),
                     _buildIcon(
                       controller.state.isSpeakerEnable.value,
+                      () {},
                       normalIconPath: "assets/icons/a_trumpet.png",
                       checkedIconPath: "assets/icons/b_trumpet.png",
                       normalText: "Speaker",
@@ -96,7 +101,8 @@ class VoiceCallPage extends GetView<VoiceCallController> {
   }
 
   _buildIcon(
-    bool state, {
+    bool state,
+    VoidCallback onTap, {
     Color? normalColor,
     Color? checkedColor,
     String? normalText,
@@ -106,19 +112,22 @@ class VoiceCallPage extends GetView<VoiceCallController> {
   }) {
     return Column(
       children: [
-        Container(
-          width: 60.w,
-          height: 60.w,
-          decoration: BoxDecoration(
-            color: state
-                ? (checkedColor ?? AppColors.primaryElementText)
-                : (normalColor ?? AppColors.primaryElementStatus),
-            borderRadius: BorderRadius.circular(32.w),
-          ),
-          child: Image.asset(
-            state
-                ? (checkedIconPath ?? "assets/icons/a_microphone.png")
-                : (normalIconPath ?? "assets/icons/a_microphone.png"),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: 60.w,
+            height: 60.w,
+            decoration: BoxDecoration(
+              color: state
+                  ? (checkedColor ?? AppColors.primaryElementText)
+                  : (normalColor ?? AppColors.primaryElementStatus),
+              borderRadius: BorderRadius.circular(32.w),
+            ),
+            child: Image.asset(
+              state
+                  ? (checkedIconPath ?? "assets/icons/a_microphone.png")
+                  : (normalIconPath ?? "assets/icons/a_microphone.png"),
+            ),
           ),
         ),
         Text(
