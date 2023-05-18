@@ -1,24 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Msgcontent {
+class MsgContent {
   final String? token;
   final String? content;
   final String? type;
   final Timestamp? addtime;
 
-  Msgcontent({
+  MsgContent({
     this.token,
     this.content,
     this.type,
     this.addtime,
   });
 
-  factory Msgcontent.fromFirestore(
+  factory MsgContent.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
     final data = snapshot.data();
-    return Msgcontent(
+    return MsgContent(
       token: data?['token'],
       content: data?['content'],
       type: data?['type'],
