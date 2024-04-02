@@ -33,6 +33,7 @@ class ChatPage extends GetView<ChatController> {
                       child: Row(
                         children: [
                           TextField(
+                            controller: controller.editingController,
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
                               hintText: "Message ...",
